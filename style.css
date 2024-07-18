@@ -1,5 +1,6 @@
 body{
   background-color: black;
+  overflow: hidden;
 }
 
 .star{
@@ -10,4 +11,19 @@ body{
   background-color: white;
   border-radius: 50%;
   position: absolute;
+}
+
+.description{
+  color: white;
+  float: left;
+}
+.choose_list{
+  display: flex;
+  float: right;
+  color: white;
+  list-style: none;
+  margin: 20px;
+}
+.check_word{
+  margin: 3px;
 }

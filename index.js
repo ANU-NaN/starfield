@@ -39,7 +39,7 @@ for (let i=0; i<starNumber; i++){
       scale(${pointTo[2]})`}
   ];
   options = {
-    duration: 1000 / scale,
+    duration: 3000 / scale,
     iterations: Infinity,
     fill: 'both',
     easing: 'linear'

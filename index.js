@@ -1,15 +1,9 @@
 import Star from './star.js';
 
-function set3DPoint(x, y, z){
-  const scale = zModifier / (zModifier + z);
-  const x2D = x * scale;
-  const y2D = y * scale;
-
-  return [x2D, y2D, scale];
-}
-
 const starNumber = 200;
-const zModifier = window.innerHeight;
+const canvasWidth = window.innerWidth;
+const canvasHeight = window.innerHeight;
+const zModifier = canvasHeight;
 const effects = [];
 
 let x,y,z;
@@ -18,11 +12,20 @@ let keyframes, options;
 let pointFrom, pointTo;
 let star;
 
+function set3DPoint(x, y, z){
+  const scale = zModifier / (zModifier + z);
+  const x2D = x * scale + canvasWidth * 0.5;
+  const y2D = y * scale + canvasHeight * 0.5;
+
+  return [x2D, y2D, scale];
+}
+
 for (let i=0; i<starNumber; i++){
-  x = Math.random() * window.innerWidth;
-  y = Math.random() * window.innerHeight;
+  x = Math.random() * canvasWidth - canvasWidth * 0.5;
+  y = Math.random() * canvasHeight - canvasHeight * 0.5;
   z = Math.random() * zModifier;
   
+  scale = zModifier / (zModifier + z);
 
   pointFrom = set3DPoint(x, y, z);
   pointTo = set3DPoint(x, y, z - zModifier);
@@ -36,7 +39,7 @@ for (let i=0; i<starNumber; i++){
       scale(${pointTo[2]})`}
   ];
   options = {
-    duration: 1000,
+    duration: 1000 / scale,
     iterations: Infinity,
     fill: 'both',
     easing: 'linear'

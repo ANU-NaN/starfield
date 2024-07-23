@@ -1,4 +1,5 @@
-import Star from './star.js';
+import {Star, Word} from './star.js';
+import words from './wordList.js';
 
 const starNumber = 200;
 const canvasWidth = window.innerWidth;
@@ -11,6 +12,7 @@ let scale;
 let keyframes, options;
 let pointFrom, pointTo;
 let star;
+let word;
 
 function set3DPoint(x, y, z){
   const scale = zModifier / (zModifier + z);
@@ -31,6 +33,7 @@ for (let i=0; i<starNumber; i++){
   pointTo = set3DPoint(x, y, z - zModifier);
 
   star = new Star(i);
+  // word = new Word(i);
 
   keyframes = [
     {transform: `translate(${pointFrom[0]}px, ${pointFrom[1]}px)
@@ -46,6 +49,35 @@ for (let i=0; i<starNumber; i++){
   };
 
   effects.push(new KeyframeEffect(star.element, keyframes, options));
+  // effects.push(new KeyframeEffect(word.text, keyframes, options))
+}
+
+for (let i=0; i<words.length; i++){
+  x = Math.random() * canvasWidth - canvasWidth * 0.5;
+  y = Math.random() * canvasHeight - canvasHeight * 0.5;
+  z = Math.random() * zModifier;
+  
+  scale = zModifier / (zModifier + z);
+
+  pointFrom = set3DPoint(x, y, z);
+  pointTo = set3DPoint(x, y, z - zModifier);
+
+  word = new Word(i);
+
+  keyframes = [
+    {transform: `translate(${pointFrom[0]}px, ${pointFrom[1]}px)
+      scale(${pointFrom[2]})`},
+    {transform: `translate(${pointTo[0]}px, ${pointTo[1]}px)
+      scale(${pointTo[2]})`}
+  ];
+  options = {
+    duration: 5000 / scale,
+    iterations: Infinity,
+    fill: 'both',
+    easing: 'linear'
+  };
+
+  effects.push(new KeyframeEffect(word.text, keyframes, options))
 }
 
 const groupEffect = new GroupEffect(effects);

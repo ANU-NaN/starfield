@@ -8,10 +8,17 @@ body{
   height: 5px;
   color: white;
   font-size: 0px;
-  /* background-color: white; */
   border-radius: 50%;
   position: absolute;
-  background: url(./star.png) no-repeat 0 0 / cover;
+  background: url("./images/starImg.gif") no-repeat 0 0 / cover;
+}
+.word{
+  color: white;
+  font-size: 5px;
+  position: absolute;
+}
+.word:hover{
+  cursor: grab;
 }
 
 .description{

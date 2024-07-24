@@ -37,11 +37,8 @@ body{
   position: relative;
 }
 .cancel{
-  /* border-radius: 10px; */
   width: 15px;
   height: 15px;
-  /* font-size: 5px; */
-  /* color: white; */
   position: absolute;
   top: -5px;
   right: -12px;

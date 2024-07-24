@@ -25,21 +25,28 @@ export class Word{
     this.text.innerHTML = words[number];
 
     const lists = document.querySelector('.choose_list');
-    
+
     this.text.addEventListener('click', ()=>{
       const list = document.createElement('li');
       list.classList.add('check_word');
       list.innerHTML = this.text.innerHTML;
-
+  
       const cancelBtn = document.createElement('div');
       cancelBtn.classList.add('cancel');
       list.append(cancelBtn);
-      lists.append(list);
 
+      if(lists.childElementCount <= 4){
+        lists.append(list);
+      }
+      else{
+        //여행지 결과에 대한 부분 구현
+      }
+  
       cancelBtn.addEventListener('click', (e)=>{
         list.remove();
-      })
+      });
     });
+    
 
     document.body.append(this.text);
   }

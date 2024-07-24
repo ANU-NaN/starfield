@@ -34,4 +34,16 @@ body{
 }
 .check_word{
   margin: 3px;
+  position: relative;
+}
+.cancel{
+  /* border-radius: 10px; */
+  width: 15px;
+  height: 15px;
+  /* font-size: 5px; */
+  /* color: white; */
+  position: absolute;
+  top: -5px;
+  right: -12px;
+  background: url(./images/cancel_img.png) no-repeat 0 0 / cover;
 }

@@ -24,12 +24,21 @@ export class Word{
     this.text.classList.add('word');
     this.text.innerHTML = words[number];
 
+    const lists = document.querySelector('.choose_list');
+    
     this.text.addEventListener('click', ()=>{
-      const lists = document.querySelector('.choose_list');
       const list = document.createElement('li');
       list.classList.add('check_word');
       list.innerHTML = this.text.innerHTML;
+
+      const cancelBtn = document.createElement('div');
+      cancelBtn.classList.add('cancel');
+      list.append(cancelBtn);
       lists.append(list);
+
+      cancelBtn.addEventListener('click', (e)=>{
+        list.remove();
+      })
     });
 
     document.body.append(this.text);
